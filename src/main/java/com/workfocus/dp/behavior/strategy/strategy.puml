@@ -1,0 +1,33 @@
+@startuml
+
+interface Strategy
+
+Strategy : method()
+
+class Context {
+    - Strategy strategy
+    + setStrategy(Strategy strategy)
+    + execMethod()
+}
+
+note as N1
+public void execMethod() {
+    strategy.method();
+}
+end note
+Context .. N1
+
+class StrategyImp1 {
+    method()
+}
+
+class StrategyImp2 {
+    method()
+}
+
+Context o-- Strategy
+
+StrategyImp1 ..|> Strategy
+StrategyImp2 ..|> Strategy
+
+@enduml
