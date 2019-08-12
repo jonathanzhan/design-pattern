@@ -1,8 +1,8 @@
 @startuml
 caption 策略模式
-interface Strategy
-
-Strategy : method()
+interface Strategy{
+    Strategy : method()
+}
 
 class Context {
     - Strategy strategy
