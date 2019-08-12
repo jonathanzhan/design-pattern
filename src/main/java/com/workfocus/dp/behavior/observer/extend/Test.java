@@ -14,30 +14,23 @@
  * limitations under the License.
  */
 
-package com.workfocus.dp.behavior.observer;
+package com.workfocus.dp.behavior.observer.extend;
 
 /**
- * 观察者模式测试调用
+ * 测试类
  *
  * @author Jonathan
  * @version 1.0.0
- * @date 2019/6/12 19:32
+ * @date 2019/8/12 18:32
  * @since 1.0.0+
  */
-public class ObserverTest {
-
+public class Test {
     public static void main(String[] args) {
-        ConcreteSubject subject = new ConcreteSubject();
-        ObserverObject object1 = new ObserverObject("张三");
-        ObserverObject object2 = new ObserverObject("李四");
-        subject.add(object1);
-        subject.add(object2);
-
-        subject.change("mess1");
-
-        subject.change("mess2");
-
-        subject.remove(object1);
-        subject.change("mess3");
+        WebChatServer webChatServer = new WebChatServer();
+        User user1 = new User("张三");
+        User user2 = new User("李四");
+        webChatServer.addObserver(user1);
+        webChatServer.addObserver(user2);
+        webChatServer.push("推送消息了");
     }
 }

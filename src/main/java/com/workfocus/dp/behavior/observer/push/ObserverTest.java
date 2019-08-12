@@ -14,21 +14,30 @@
  * limitations under the License.
  */
 
-package com.workfocus.dp.behavior.observer;
+package com.workfocus.dp.behavior.observer.push;
 
 /**
- * 观察者接口
+ * 观察者模式测试调用
  *
  * @author Jonathan
  * @version 1.0.0
- * @date 2019/6/12 19:04
+ * @date 2019/6/12 19:32
  * @since 1.0.0+
  */
-public interface Observer {
+public class ObserverTest {
 
-    /**
-     * 观察者响应
-     * @param data 数据内容
-     */
-    void response(String data);
+    public static void main(String[] args) {
+        ConcreteSubject subject = new ConcreteSubject();
+        ObserverObject object1 = new ObserverObject("张三");
+        ObserverObject object2 = new ObserverObject("李四");
+        subject.add(object1);
+        subject.add(object2);
+
+        subject.notifyObserver("mess1");
+
+        subject.notifyObserver("mess2");
+
+        subject.remove(object1);
+        subject.notifyObserver("mess3");
+    }
 }

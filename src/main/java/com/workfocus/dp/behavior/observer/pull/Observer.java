@@ -14,32 +14,20 @@
  * limitations under the License.
  */
 
-package com.workfocus.dp.behavior.observer;
+package com.workfocus.dp.behavior.observer.pull;
 
 /**
- * 主题的具体实现对象
+ * 观察者抽象接口
  *
  * @author Jonathan
  * @version 1.0.0
- * @date 2019/6/12 19:21
+ * @date 2019/8/12 16:52
  * @since 1.0.0+
  */
-public class ConcreteSubject extends Subject {
-
-    private String data;
-
-    @Override
-    protected void notifyObserver() {
-        System.out.println("开始广播。。。。");
-        for (Observer o : observers) {
-            o.response(this.data);
-        }
-    }
-
-
-    public void change(String data){
-        this.data = data;
-        notifyObserver();
-    }
-
+public interface Observer {
+    /**
+     * 观察者响应
+     * @param subject 抽象主题对象
+     */
+    void response(Subject subject);
 }

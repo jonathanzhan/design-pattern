@@ -14,53 +14,35 @@
  * limitations under the License.
  */
 
-package com.workfocus.dp.behavior.observer;
+package com.workfocus.dp.behavior.observer.extend;
+
+import java.util.Observable;
+import java.util.Observer;
 
 /**
- * TODO 关于此类的描述
+ * 观察者,关注公众号的用户
  *
  * @author Jonathan
  * @version 1.0.0
- * @date 2019/6/12 19:52
+ * @date 2019/8/12 18:29
  * @since 1.0.0+
  */
-public class ObserverObject implements Observer {
+public class User implements Observer {
     private String name;
 
-    private String message;
+    private String mess;
 
-    public ObserverObject(String name) {
+    public User(String name) {
         this.name = name;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    /**
-     * 观察者响应
-     *
-     * @param data 数据内容
-     */
     @Override
-    public void response(String data) {
-        this.message = data;
-        info();
+    public void update(Observable observable, Object mess) {
+        this.mess = mess.toString();
+        read();
     }
 
-    public void info(){
-        System.out.println(name + " 收到推送消息： " + message);
+    public void read() {
+        System.out.println(name + " 收到推送消息： " + mess);
     }
 }

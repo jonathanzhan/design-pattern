@@ -14,31 +14,40 @@
  * limitations under the License.
  */
 
-package com.workfocus.dp.behavior.observer;
-
-import java.util.ArrayList;
-import java.util.List;
+package com.workfocus.dp.behavior.observer.push;
 
 /**
- * 抽象主题
+ * 具体观察者对象
  *
  * @author Jonathan
  * @version 1.0.0
- * @date 2019/6/12 19:04
+ * @date 2019/6/12 19:52
  * @since 1.0.0+
  */
-public abstract class Subject {
+public class ObserverObject implements Observer {
+    /**
+     * 观察者名称
+     */
+    private String name;
 
-    protected List<Observer> observers = new ArrayList<>();
+    /**
+     * 被通知的消息数据
+     */
+    private String dataInfo;
 
-    public void add(Observer o) {
-        observers.add(o);
+    public ObserverObject(String name) {
+        this.name = name;
     }
 
-    public void remove(Observer o) {
-        observers.remove(o);
+    /**
+     * 观察者响应
+     *
+     * @param info 数据内容
+     */
+    @Override
+    public void response(String info) {
+        this.dataInfo = info;
+        System.out.println(name + " 收到推送消息： " + dataInfo);
     }
-
-    protected abstract void notifyObserver();
 
 }
